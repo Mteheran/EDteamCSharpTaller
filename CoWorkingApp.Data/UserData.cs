@@ -49,6 +49,68 @@ namespace  CoWorkingApp.Data
                                 }
 
             return true;  
-        } 
+        }
+
+        public bool Login(string User, string PassWord, bool isAdmin = false)
+        {
+            var userCollection = jsonManager.GetCollection();
+            var passwordEncript = EncryptData.EncryptText(PassWord);
+        
+            if(isAdmin) User = "ADMIN";
+            var userFound = userCollection.FirstOrDefault(p => p.Email == User && p.PassWord ==  passwordEncript);
+
+            if(userFound !=null) return true;
+
+            return false;
+        }
+
+        public bool CreateUser(User newUser)
+        {
+            newUser.PassWord = EncryptData.EncryptText(newUser.PassWord);
+
+            var userCollection = jsonManager.GetCollection();
+
+            userCollection.Add(newUser);
+
+            jsonManager.SaveCollection(userCollection);
+
+            return true;
+
+        }
+
+        public User FindUser(string email)
+        {
+            var userCollection = jsonManager.GetCollection();
+
+            return userCollection.FirstOrDefault(p => p.Email == email);
+        }
+
+        public bool EditUser(User editUser)
+        {
+            editUser.PassWord = EncryptData.EncryptText(editUser.PassWord);
+
+            var userCollection = jsonManager.GetCollection();
+
+            var indexUser = userCollection.FindIndex(p=> p.UserId == editUser.UserId);
+
+            userCollection[indexUser] = editUser;
+
+            jsonManager.SaveCollection(userCollection);
+
+            return true;
+
+        }
+
+        public bool DeleteUser(Guid userId)
+        {
+            var userCollection = jsonManager.GetCollection();
+
+            userCollection.Remove(userCollection.Find(p=> p.UserId == userId));
+
+            jsonManager.SaveCollection(userCollection);
+
+            return true;
+        }
+
     }
 }

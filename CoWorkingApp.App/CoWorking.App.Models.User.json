@@ -1,1 +1,16 @@
-[{"UserId":"9159c8ac-0235-4270-a94f-4cdd9af1a62f","Name":"ADMIN","LastName":"ADMIN","Email":"ADMIN","PassWord":"f227730e30dcc494f0647523513c68e71edf4ddf3dc209929cde19b3bb08fc20"}]
+[
+  {
+    "UserId": "9159c8ac-0235-4270-a94f-4cdd9af1a62f",
+    "Name": "ADMIN",
+    "LastName": "ADMIN",
+    "Email": "ADMIN",
+    "PassWord": "f227730e30dcc494f0647523513c68e71edf4ddf3dc209929cde19b3bb08fc20"
+  },
+  {
+    "UserId": "002af898-9129-4cc7-84bf-bb44a86a2b91",
+    "Name": "Miguel",
+    "LastName": "Teheran",
+    "Email": "miguelt@gmail.com",
+    "PassWord": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"
+  }
+]

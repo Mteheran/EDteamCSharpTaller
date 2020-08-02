@@ -21,7 +21,7 @@ namespace CoWorkingApp.Data
             }
             else    
             {
-                var jsonCollection = JsonConvert.SerializeObject(myCollection);
+                var jsonCollection = JsonConvert.SerializeObject(myCollection, Formatting.Indented);
                 var streamWriter = new StreamWriter(collectionPath);
                 streamWriter.WriteLine(jsonCollection);
                 streamWriter.Close();
@@ -36,7 +36,7 @@ namespace CoWorkingApp.Data
 
                 try 
                 {
-                                var jsonCollection = JsonConvert.SerializeObject(collection);
+                                var jsonCollection = JsonConvert.SerializeObject(collection, Formatting.Indented);
                                 var streamWriter = new StreamWriter(collectionPath);
                                 streamWriter.WriteLine(jsonCollection);
                                 streamWriter.Close();

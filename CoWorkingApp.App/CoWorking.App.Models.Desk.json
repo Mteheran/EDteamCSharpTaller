@@ -1,0 +1,32 @@
+[
+  {
+    "DeskId": "222943f1-0af5-4855-84ab-da4ca4dedf8e",
+    "Number": "A-001",
+    "Description": "puesto A1",
+    "DeskStatus": 1
+  },
+  {
+    "DeskId": "35999f1f-e5f3-4a7f-a862-58882d742504",
+    "Number": "A-002",
+    "Description": "puesto 2",
+    "DeskStatus": 1
+  },
+  {
+    "DeskId": "5a858e17-c622-4892-8d52-077f9385dd45",
+    "Number": "A-003",
+    "Description": "puesto 3",
+    "DeskStatus": 1
+  },
+  {
+    "DeskId": "a29e8045-c449-4fbe-9896-35f8516ed386",
+    "Number": "B-001",
+    "Description": "puesto b1",
+    "DeskStatus": 1
+  },
+  {
+    "DeskId": "2441cae8-d556-4b7a-9b66-50c1238d847d",
+    "Number": "B-002",
+    "Description": "puesto b2",
+    "DeskStatus": 3
+  }
+]
