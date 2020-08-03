@@ -3,20 +3,24 @@ using CoWorkingApp.Data;
 using CoWorkingApp.App.Enumerations;
 using CoWorkingApp.App.Logic;
 using CoWorkingApp.Data.Tools;
+using CoWorking.App.Models;
+using CoWorkingApp.App.Tools;
 
 namespace CoWorkingApp.App
 {
     class Program
     {
+        static User ActiveUser {get;set;}
         static UserData UserDataService {get;set;} = new UserData();
         static DeskData DeskDataService {get;set;} = new DeskData();
-        static UserService UserLogicService {get;set;} = new UserService(UserDataService);
+        static UserService UserLogicService {get;set;} = new UserService(UserDataService, DeskDataService);
         static DeskService DeskLogicService {get;set;} = new DeskService(DeskDataService);
         static void Main(string[] args)
         {
             string roleSelected= "";
 
             Console.WriteLine("Bienvenido al Coworking");
+            Console.WriteLine("Seleccione el rol con el que desea ingresar");
             Console.WriteLine();
             while(roleSelected!="1" && roleSelected!="2")
             {
@@ -26,21 +30,8 @@ namespace CoWorkingApp.App
 
             if(Enum.Parse<UserRole>(roleSelected) == UserRole.Admin)
             {
-
-                bool loginResult = false;
-
-                while (!loginResult) 
-                {
-                    Console.WriteLine("Ingrese usuario");
-                    var userLogin = Console.ReadLine();
-                    Console.WriteLine("Ingrese contraseña");
-                    var passwordLogin = EncryptData.GetPassWord();
-
-                    loginResult = UserDataService.Login(userLogin, passwordLogin);
-
-                    if(!loginResult) Console.WriteLine("Usuario o contraseña incorrecta");
-                }
-              
+                UserLogicService.LoginUser(true);
+                SpinnerManager.Show();
 
                 string menuAdminSelected = "";
 
@@ -99,6 +90,13 @@ namespace CoWorkingApp.App
             }
             else if (Enum.Parse<UserRole>(roleSelected)== UserRole.User)
             {
+                //Login before actions
+                ActiveUser = UserLogicService.LoginUser(false);
+
+            while(true)
+            {
+
+
                 string menuUsuarioSelected = "";
 
                 while(menuUsuarioSelected!="1" && 
@@ -112,22 +110,12 @@ namespace CoWorkingApp.App
 
                 MenuUser menuUserSelected = Enum.Parse<MenuUser>(menuUsuarioSelected);
 
-                switch( menuUserSelected)
-                {
-                    case MenuUser.ReservarPuesto:
-                        Console.WriteLine("opción reservar puesto");
-                    break;
-                    case MenuUser.CancelarReserva:
-                        Console.WriteLine("opción cancelar reserva");
-                     break;
-                    case MenuUser.HistorialReservas:
-                        Console.WriteLine("opción ver el historial de reservas");
-                    break;
-                    case MenuUser.CambiarPassword:
-                        Console.WriteLine("opción cambiar contraseña");
-                    break;
-                }
+                menuUsuarioSelected="";
+
+                UserLogicService.ExecuteActionByUser(ActiveUser, menuUserSelected);
                
+            }
+
             }
         }
         

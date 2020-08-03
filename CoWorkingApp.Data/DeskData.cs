@@ -1,6 +1,8 @@
 using System;
 using CoWorking.App.Models;
 using System.Linq;
+using CoWorking.App.Models.Enumerations;
+using System.Collections.Generic;
 
 namespace CoWorkingApp.Data
 {
@@ -55,7 +57,17 @@ namespace CoWorkingApp.Data
             jsonManager.SaveCollection(deskCollection);
 
             return true;
-        } 
+        }
+
+        public IEnumerable<Desk> GetAvailableDesks()
+        {
+            return jsonManager.GetCollection().Where(p => p.DeskStatus == DeskStatus.Active);
+        }
+
+        public IEnumerable<Desk> GetAllDesks()
+        {
+            return jsonManager.GetCollection();
+        }
 
     }
 }

@@ -11,6 +11,13 @@
     "Name": "Miguel",
     "LastName": "Teheran",
     "Email": "miguelt@gmail.com",
+    "PassWord": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+  },
+  {
+    "UserId": "b5ea3967-a0ff-4d46-8228-3724cffd17a3",
+    "Name": "Rina",
+    "LastName": "Martinez",
+    "Email": "rinam@gmail.com",
     "PassWord": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"
   }
 ]

@@ -51,17 +51,14 @@ namespace  CoWorkingApp.Data
             return true;  
         }
 
-        public bool Login(string User, string PassWord, bool isAdmin = false)
+        public User Login(string User, string PassWord, bool isAdmin = false)
         {
             var userCollection = jsonManager.GetCollection();
             var passwordEncript = EncryptData.EncryptText(PassWord);
         
             if(isAdmin) User = "ADMIN";
             var userFound = userCollection.FirstOrDefault(p => p.Email == User && p.PassWord ==  passwordEncript);
-
-            if(userFound !=null) return true;
-
-            return false;
+            return userFound;
         }
 
         public bool CreateUser(User newUser)

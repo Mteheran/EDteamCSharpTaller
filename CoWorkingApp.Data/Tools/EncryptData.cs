@@ -17,28 +17,5 @@ namespace CoWorkingApp.Data.Tools
                 return has;
             }
         }
-
-        public static string GetPassWord()
-        {
-            string paswordInput = "";
-
-            while(true)
-            {
-                var keyPress = Console.ReadKey(true);
-                
-                if(keyPress.Key == ConsoleKey.Enter)
-                {
-                    Console.WriteLine(" ");
-                    break;
-                }
-                else
-                {
-                    Console.Write("*");
-                    paswordInput+= keyPress.KeyChar;
-                }
-            }
-
-            return paswordInput;
-        }
     }
 }
